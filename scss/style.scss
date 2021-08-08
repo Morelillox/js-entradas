@@ -1,6 +1,22 @@
 //Scss
 
+@import "./componentes/textos";
 
-.titulo{
-    background-color: red;
+// index
+
+*{
+    background-color: rosybrown !important;
 }
+
+.section{
+    background-color: rosybrown !important;
+}
+
+.pelota{
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+    
+
+}
+
