@@ -29,8 +29,9 @@ let aforocds = parseInt(ecuacion(cds))
 let aforogpc = parseInt(ecuacion(gpc))
 let aforocentenario = parseInt(ecuacion(centenario))
 
-
-
+const entradasactualesCDS = [];
+const entradasactualesGPC = [];
+const entradasactualesCEN = [];
 
 
 while (estadio != 4) {
@@ -73,21 +74,45 @@ while (estadio != 4) {
             console.log(this)
             console.log(compradorCDS + " compro para el estadio CDS: " + cantEntradascds)
         }
+        
 
         }
+
+        
 
         const comprador1 = new entrada (this.precio,prompt("Ingrese descuento: Socios $20 descuento / No socios Ingrese 0"),parseInt(prompt(compradorCDS + " ingrese cantidad de entradas:")))
         let cantEntradascds = comprador1.cantidad
         
         comprador1.compra();
-        comprador1.ahorro(),
+        comprador1.ahorro();
 
+        //////
+        
+        let entrada1 = cantEntradascds
+        entradasactualesCDS.push(entrada1)
+        let suma =0
+        for (let i =0; i<entradasactualesCDS.length;i++){
+        suma += entradasactualesCDS[i];
+        }
+
+        let aforo1 = entradas(aforocds,suma)
+
+        console.log("aforo restante: " + aforo1)
+        console.log(entradasactualesCDS)
+        //////
+
+        if(suma > aforocds){
+            alert("La cantidad de entradas actuales vendidas al momento es de : " + suma + " Solamente puede vender " + entradas(aforocds,suma) + " mas." + "\n Intente nuevamente" )
+            break
+        }
+
+        else{
             alert("Total a pagar: " + "$" + comprador1.descuento)
-            alert("Gracias por su compra , aun quedan para el estadio " + est1 + " " + entradas(aforocds, cantEntradascds))
+            alert("Gracias por su compra , aun quedan para el estadio " + est1 + " " + entradas(aforocds, suma))
 
         comprador1.visualizar(); 
             break
-          
+          }
 
             }
 
@@ -136,15 +161,35 @@ while (estadio != 4) {
                         let cantEntradasgpc = comprador1.cantidad
                         
                         comprador1.compra();
-                        comprador1.ahorro(),
-                    
-            
-            
-                    alert("Total a pagar: " + "$" + comprador1.descuento)
-                    alert("Gracias por su compra , aun quedan para el estadio " + est2 + " " + entradas(aforogpc, cantEntradasgpc))
+                        comprador1.ahorro();
 
-                    comprador1.visualizar(); 
-                    break
+                        //////
+                        let entrada2 = cantEntradasgpc
+                        entradasactualesGPC.push(entrada2)
+                        let suma =0
+                        for (let i =0; i<entradasactualesGPC.length;i++){
+                        suma += entradasactualesGPC[i];
+                        }
+
+                        let aforo2 = entradas(aforogpc,suma)
+
+                        console.log("aforo restante: " + aforo2)
+                        console.log(entradasactualesGPC)
+                        //////
+                    
+               
+                        if(suma > aforogpc){
+                            alert("La cantidad de entradas actuales vendidas al momento es de : " + suma + " Solamente puede vender " + entradas(aforogpc,suma) + " mas." + "\n Intente nuevamente" )
+                            break
+                        }
+                
+                        else{
+                            alert("Total a pagar: " + "$" + comprador1.descuento)
+                            alert("Gracias por su compra , aun quedan para el estadio " + est2 + " " + entradas(aforogpc, suma))
+                
+                        comprador1.visualizar(); 
+                            break
+                          }
                     }
 
             //Centenario
@@ -192,16 +237,36 @@ while (estadio != 4) {
                         let cantEntradascen = comprador1.cantidad
 
                         comprador1.compra();
-                        comprador1.ahorro(),
-                    
-            
-                        alert("Total a pagar: " + "$" + comprador1.descuento)
-                        alert("Gracias por su compra , aun quedan para el estadio " + est3 + " " + entradas(aforocentenario, cantEntradascen))
+                        comprador1.ahorro();
 
-                        comprador1.visualizar();
-                        break
+                        //////
+                        let entrada3 = cantEntradascen
+                        entradasactualesCEN.push(entrada3)
+                        let suma =0
+                        for (let i =0; i<entradasactualesCEN.length;i++){
+                        suma += entradasactualesCEN[i];
                         }
 
+                        let aforo3 = entradas(aforocentenario,suma)
+
+                        console.log("aforo restante: " + aforo3)
+                        console.log(entradasactualesCEN)
+                        //////
+                    
+                        if(suma > aforocentenario){
+                            alert("La cantidad de entradas actuales vendidas al momento es de : " + suma + " Solamente puede vender " + entradas(aforocentenario,suma) + " mas." + "\n Intente nuevamente" )
+                            break
+                        }
+                
+                        else{
+                            alert("Total a pagar: " + "$" + comprador1.descuento)
+                            alert("Gracias por su compra , aun quedan para el estadio " + est3 + " " + entradas(aforocentenario, suma))
+                
+                        comprador1.visualizar(); 
+                            break
+                          }
+                        
+                        }
             //Default
         default:
             alert("NO SELECCIONO NUMERO VALIDO")
