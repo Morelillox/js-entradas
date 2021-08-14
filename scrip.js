@@ -50,7 +50,7 @@ while (estadio != 4) {
 
             if (edad1 < 18) {
                 alert("Menores de edad no estan autorizados a comprar entradas para este tipo de eventos")
-                
+                console.log("La persona no puede comprar por ser menor de edad")
                 break
             }
                 else {
@@ -72,7 +72,7 @@ while (estadio != 4) {
 
         visualizar(){
             console.log(this)
-            console.log(compradorCDS + " compro para el estadio CDS: " + cantEntradascds)
+            console.log(compradorCDS + " compro para el estadio CDS: " + cantEntradascds + "entradas")
         }
         
 
@@ -98,7 +98,7 @@ while (estadio != 4) {
         let aforo1 = entradas(aforocds,suma)
 
         console.log("aforo restante: " + aforo1)
-        console.log(entradasactualesCDS)
+        
         //////
 
         if(suma > aforocds){
@@ -111,6 +111,13 @@ while (estadio != 4) {
             alert("Gracias por su compra , aun quedan para el estadio " + est1 + " " + entradas(aforocds, suma))
 
         comprador1.visualizar(); 
+
+        entradasactualesCDS.sort(function(a, b) {
+            return a - b;
+          });
+        console.log("Entradas ordenadas: " + entradasactualesCDS)
+
+
             break
           }
 
@@ -130,7 +137,7 @@ while (estadio != 4) {
 
             if (edad2 < 18) {
                 alert("Menores de edad no estan autorizados a comprar entradas para este tipo de eventos")
-                
+                console.log("La persona no puede comprar por ser menor de edad")
                 break
                 }
                 else {
@@ -152,7 +159,7 @@ while (estadio != 4) {
                 
                         visualizar(){
                             console.log(this)
-                            console.log(compradorGPC + " compro para el estadio GPC: " + cantEntradasgpc)
+                            console.log(compradorGPC + " compro para el estadio GPC: " + cantEntradasgpc + "entradas")
                         }
                 
                         }
@@ -174,7 +181,7 @@ while (estadio != 4) {
                         let aforo2 = entradas(aforogpc,suma)
 
                         console.log("aforo restante: " + aforo2)
-                        console.log(entradasactualesGPC)
+                        
                         //////
                     
                
@@ -188,6 +195,12 @@ while (estadio != 4) {
                             alert("Gracias por su compra , aun quedan para el estadio " + est2 + " " + entradas(aforogpc, suma))
                 
                         comprador1.visualizar(); 
+
+                        entradasactualesGPC.sort(function(a, b) {
+                            return a - b;
+                          });
+                        console.log("Entradas ordenadas: " + entradasactualesGPC)
+                    
                             break
                           }
                     }
@@ -205,6 +218,7 @@ while (estadio != 4) {
 
             if (edad3 < 18) {
                 alert("Menores de edad no estan autorizados a comprar entradas para este tipo de eventos")
+                console.log("La persona no puede comprar por ser menor de edad")
                 
                 break
             }
@@ -227,7 +241,7 @@ while (estadio != 4) {
                 
                         visualizar(){
                             console.log(this)
-                            console.log(compradorCEN + " compro para el estadio Centenario: " + cantEntradascen)
+                            console.log(compradorCEN + " compro para el estadio Centenario: " + cantEntradascen + "entradas")
                         }
                 
                         }
@@ -250,7 +264,7 @@ while (estadio != 4) {
                         let aforo3 = entradas(aforocentenario,suma)
 
                         console.log("aforo restante: " + aforo3)
-                        console.log(entradasactualesCEN)
+                        
                         //////
                     
                         if(suma > aforocentenario){
@@ -263,6 +277,12 @@ while (estadio != 4) {
                             alert("Gracias por su compra , aun quedan para el estadio " + est3 + " " + entradas(aforocentenario, suma))
                 
                         comprador1.visualizar(); 
+
+                        entradasactualesCEN.sort(function(a, b) {
+                            return a - b;
+                          });
+                        console.log("Entradas ordenadas: " + entradasactualesCEN)
+
                             break
                           }
                         
