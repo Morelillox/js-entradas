@@ -34,18 +34,61 @@
   font-family: cursive;
 }
 
-* {
-  background-color: rosybrown !important;
+.btn-boton {
+  background-color: #878787 !important;
+  border-color: #7a7a7a !important;
+  color: #FFFFFF;
+  display: inline;
+  align-items: center;
+  justify-content: space-evenly !important;
+}
+
+.btn-boton:hover,
+.btn-boton:focus,
+.btn-boton:active,
+.btn-boton.active {
+  background-color: #777777 !important;
+  border-color: #5f5f5f !important;
+  color: #FFFFFF;
+}
+
+.btn-boton.disabled:hover,
+.btn-boton.disabled:focus,
+.btn-boton.disabled:active,
+.btn-boton.disabled.active,
+.btn-boton[disabled]:hover,
+.btn-boton[disabled]:focus,
+.btn-boton[disabled]:active,
+.btn-boton[disabled].active,
+fieldset[disabled] .btn-boton:hover,
+fieldset[disabled] .btn-boton:focus,
+fieldset[disabled] .btn-boton:active,
+fieldset[disabled] .btn-boton.active {
+  background-color: #878787 !important;
+  border-color: #7a7a7a !important;
+  color: #FFFFFF;
 }
 
 .section {
-  background-color: rosybrown !important;
+  background-color: rosybrown;
 }
 
 .pelota {
   display: flex;
   justify-content: center;
   border-radius: 20px;
+}
+
+.card-img, .card-img-bottom, .card-img-top {
+  width: 30% !important;
+  display: flex;
+  justify-content: center;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  padding: 1rem 1rem;
+  display: inline-grid;
 }
 
 /*# sourceMappingURL=style.css.map */

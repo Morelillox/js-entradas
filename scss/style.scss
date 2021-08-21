@@ -1,15 +1,14 @@
 //Scss
 
 @import "./componentes/textos";
+@import "./componentes/botones";
 
 // index
 
-*{
-    background-color: rosybrown !important;
-}
+
 
 .section{
-    background-color: rosybrown !important;
+    background-color: rosybrown ;
 }
 
 .pelota{
@@ -20,3 +19,16 @@
 
 }
 
+.card-img, .card-img-bottom, .card-img-top {
+    width: 30% !important;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 1rem 1rem;
+    display: inline-grid;
+}
