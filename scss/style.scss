@@ -5,30 +5,60 @@
 
 // index
 
-
-
-.section{
-    background-color: rosybrown ;
+body {
+  background-color: rgb(173, 202, 184) !important;
 }
 
-.pelota{
-    display: flex;
-    justify-content: center;
-    border-radius: 20px;
-    
-
+.pelota {
+  display: flex;
+  justify-content: center;
+  border-radius: 20px;
 }
 
-.card-img, .card-img-bottom, .card-img-top {
-    width: 30% !important;
-    display: flex;
-    justify-content: center;
+.card-img,
+.card-img-bottom,
+.card-img-top {
+  width: 280px !important;
+  height: 210px !important;
+  display: flex;
+  justify-content: center;
 }
 
-
+.card {
+  background-color: rgb(197, 183, 131) !important;
+  border-radius: 15px !important;
+}
 
 .card-body {
-    flex: 1 1 auto;
-    padding: 1rem 1rem;
-    display: inline-grid;
+  flex: 1 1 auto;
+  padding: 1rem 1rem;
+  display: inline-grid;
+}
+
+.divgrid {
+  display: grid;
+  grid-template-areas: "a b";
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.img {
+  grid-area: a;
+  display: flex;
+  justify-content: center;
+  border-radius: 25px;
+}
+.resumen {
+  grid-area: b;
+  font-family: sans-serif;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  border-color: black;
+  border-radius: 25px;
+  font-family: "Staatliches", cursive;
+}
+
+.resto {
+  color: brown;
 }

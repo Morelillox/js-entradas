@@ -2,305 +2,464 @@
 
 
 //aforo por pandemia del 30%
-let aforo = 0.3
+var aforo = 0.3
 //aforo total de cada estadio 
-let cds = 40700
-let gpc = 34000
-let centenario = 60235
+var cds = 40700
+var gpc = 34000
+var centenario = 60235
 console.log("Estadios: " + "CDS: " + cds + "\nGPC: " + gpc + "\nCentenario: " + centenario)
 
-//Informacion sobre coronavirus en URUGUAY
-alert("En esta nueva fase de la Pandemia Covid-19 en Uruguay, el gobierno decide habilitar el 30% de aforo en los estadios")
 
-//Solicitud para trabajar en los estadios habitlitados para publico
-let estadio = parseInt(prompt("Ingrese estadio: \n 1 - Campeon del Siglo (Peñarol) \n 2 - Parque Central (Nacional) \n 3 - Centenario (Seleccion Uruguaya) \n 4 - PARA SALIR DEL PROGRAMA"))
 
 //Asignacion de estadios 
-let est1 = "Campeon del Siglo"
-let est2 = "Parque Central"
-let est3 = "Estadio Centenario"
+var est1 = "Campeon del Siglo"
+var est2 = "Parque Central"
+var est3 = "Estadio Centenario"
 
 //Constantes que seran utilizadas 
-const ecuacion = x => x * aforo
-const entradas = (a, b) => a - b;
+var ecuacion = x => x * aforo
+var entradas = (a, b) => a - b;
 
 //Operacion matematica para asignar la cantidad de aforo disponible para cada estadio
-let aforocds = parseInt(ecuacion(cds))
-let aforogpc = parseInt(ecuacion(gpc))
-let aforocentenario = parseInt(ecuacion(centenario))
+var aforocds = parseInt(ecuacion(cds))
+var aforogpc = parseInt(ecuacion(gpc))
+var aforocentenario = parseInt(ecuacion(centenario))
 
-const entradasactualesCDS = [];
-const entradasactualesGPC = [];
-const entradasactualesCEN = [];
+var entradasactualesCDS = [];
+var entradasactualesGPC = [];
+var entradasactualesCEN = [];
 
+var datoscds = []
+var datosgpc = []
+var datoscen = []
 
-while (estadio != 4) {
+/// clases
 
-    switch (estadio) {
-
-        //Campeon del Siglo
-        case 1:
-            console.log("Estadio seleccionado: " + est1)
-
-            console.log("Aforo de estadio seleccionado: " + aforocds)
-            alert("El aforo de este estadio durante la pandemia sera de: " + aforocds)
-
-            let compradorCDS = prompt("ingrese nombre:")
-            let edad1 = parseInt(prompt("ingrese edad"))
-
-            if (edad1 < 18) {
-                alert("Menores de edad no estan autorizados a comprar entradas para este tipo de eventos")
-                console.log("La persona no puede comprar por ser menor de edad")
-                break
-            }
-                else {
-
-        class entrada {
-        constructor(precio, descuento, cantidad) {
-        this.precio  = 250;
-        this.descuento  = parseFloat(descuento);
+class Entrada {
+    constructor(precio, descuento, cantidad) {
+        this.precio = precio;
+        this.descuento = descuento;
         this.cantidad = cantidad;
-        }
+    }
+
+    compra() {
+        this.venta = (this.precio - this.descuento) * this.cantidad;
+    }
+
+    ahorro() {
+        this.descuento = this.venta;
+    }
+
+    visualizar() {
+        console.log(this)
+        console.log(`Nombre: ${nombre.val()} Apellido: ${apellido.val()}`);
+        console.log("Compro para el estadio: " + this.cantidad + " entradas");
+    }
+
+
+}
+
+class Dato {
+    constructor(id, nombre, apellido, cantidad) {
+        this.id = id;
+        this.name = nombre;
+        this.last = apellido;
+        this.qty = cantidad;
+    }
+
+    toString() {
+        //devolvemos nuestro objeto en formato json
+        return JSON.stringify(this);
+    }
+}
+
+let id = 0;
+
+
+
+/* function guardarLista() {
+    localStorage.setItem("datoscds", JSON.stringify(datoscds));
+    console.log("La lista se ha guardado con " + datoscds.length + " Compras:");
+    for (Dato of datoscds) {
+        console.log(Dato.toString());
+    }
+} */
+
+///funcion botones desplegables
+
+function agregarItemcds() {
+
+    console.log("Estadio seleccionado: " + est1 + " aforo: " + aforocds)
+
+};
+
+function agregarItemgpc() {
+
+    console.log("Estadio seleccionado: " + est2 + " aforo: " + aforogpc)
+
+};
+
+function agregarItemcen() {
+
+    console.log("Estadio seleccionado: " + est3 + " aforo: " + aforocen)
+};
+
+
+///Aplicando JQuerry
+
+$(document).ready(function () {
+
+    ///Submit boton formulario Campeon del Siglo
+
+    var formulario = document.getElementById("formulariocds");
+    formulario.addEventListener("submit", validarDatoscds);
+
+    function validarDatoscds(e) {
+
+        e.preventDefault();
+
+
+
+        nombre = $("#nombrecds");
+        apellido = $("#apellidocds");
+        edad = $("#edadcds");
+        cantidadd = parseInt($("#entradascds").val());
+
+        console.log(`Nombre: ${nombre.val()} Apellido: ${apellido.val()}`);
+
     
-        compra(){
-            this.venta = (this.precio - this.descuento) * this.cantidad;
-        }
-        
-        ahorro() {
-            this.descuento = this.venta; 
-        }
+        let NuevoUsuario = new Dato (++id, nombre.val(), apellido.val(), cantidadd)
 
-        visualizar(){
-            console.log(this)
-            console.log(compradorCDS + " compro para el estadio CDS: " + cantEntradascds + "entradas")
-        }
-        
+        datoscds.push(
+            NuevoUsuario
+        )
 
-        }
 
-        
+        var miCheckbox = $("#checkcds");
+        var descuento1 = 0
+        if (miCheckbox.checked == true) {
+            descuento1 = 20
+        } else {
+            descuento1 = 0
+        };
 
-        const comprador1 = new entrada (this.precio,prompt("Ingrese descuento: Socios $20 descuento / No socios Ingrese 0"),parseInt(prompt(compradorCDS + " ingrese cantidad de entradas:")))
-        let cantEntradascds = comprador1.cantidad
-        
+
+        const comprador1 = new Entrada(parseInt(250), parseInt(descuento1), cantidadd)
+        var cantEntradascds = comprador1.cantidad
+
         comprador1.compra();
         comprador1.ahorro();
 
         //////
-        
-        let entrada1 = cantEntradascds
+
+        var entrada1 = cantEntradascds
         entradasactualesCDS.push(entrada1)
-        let suma =0
-        for (let i =0; i<entradasactualesCDS.length;i++){
-        suma += entradasactualesCDS[i];
+        var suma = 0
+        for (var i = 0; i < entradasactualesCDS.length; i++) {
+            suma += entradasactualesCDS[i];
         }
 
-        let aforo1 = entradas(aforocds,suma)
+        var aforo1 = entradas(aforocds, suma)
 
         console.log("aforo restante: " + aforo1)
-        
+
+
         //////
 
-        if(suma > aforocds){
-            alert("La cantidad de entradas actuales vendidas al momento es de : " + suma + " Solamente puede vender " + entradas(aforocds,suma) + " mas." + "\n Intente nuevamente" )
-            break
+        if (suma > aforocds) {
+            alert("La cantidad de entradas actuales vendidas al momento es de : " + suma + " Solamente puede vender " + entradas(aforocds, suma) + " mas." + "\n Intente nuevamente")
+
+        } else {
+
+            comprador1.visualizar();
+
         }
 
-        else{
+
+        $("#cds").append(`<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                                <div class="card-header">RESUMEN</div>
+                                <div class="card-body">
+                                <p class="card-text"> Gracias !!! : ${nombre.val()}</p>
+                                <p class="card-text"> Saldo a Pagar: !!! : ${comprador1.descuento}</p>
+                                <h5 class="card-title">Entradas Compradas: ${cantidadd}</h5>
+                                <p class="card-text"> Quedan para vender: ${aforo1}</p>
+                                <button  type="submit" id="guardar" class=" btn-boton" >Confirmar</button>
+                                </div>
+                                </div>`);
+
+
+        $("#guardar").click(function () {
+            console.log("GUARDAR Y RESET");
+            localStorage.setItem("datoscds", JSON.stringify(datoscds));
+            console.log("La lista se ha guardado con " + datoscds.length + " Compras:");
+        
+            $("#edadcds").val("")
+            $("#nombrecds").val("")
+            $("#apellidocds").val("")
+            $("#entradascds").val("")
+            $("#cds").html("");
+        });
+
+
+    }
+
+
+
+
+    ///Submit boton formulario Parque central
+
+    var formulario = document.getElementById("formulariogpc");
+    formulario.addEventListener("submit", validarDatosgpc);
+
+    function validarDatosgpc(e) {
+
+        e.preventDefault();
+
+        nombre = document.getElementById("nombregpc")
+        apellido = document.getElementById("apellidogpc")
+        edad = document.getElementById("edadgpc")
+
+
+
+        var miCheckbox = document.getElementById("checkgpc");
+        var descuento1 = 0
+        if (miCheckbox.checked == true) {
+            descuento1 = 20
+            alert("Selecciono que la persona es socia. " + " Tendra un descuento de : $" + descuento1 + " por cada entrada comprada.")
+        } else {
+            descuento1 = 0
+        };
+
+
+
+
+        class entrada {
+            constructor(precio, descuento, cantidad) {
+                this.precio = parseInt(250);
+                this.descuento = parseInt(descuento1);
+                this.cantidad = parseInt(document.getElementById("entradasgpc").value);
+            }
+
+            compra() {
+                this.venta = (this.precio - this.descuento) * this.cantidad;
+            }
+
+            ahorro() {
+                this.descuento = this.venta;
+            }
+
+            visualizar() {
+                console.log(this)
+                console.log(`${nombre.value} : ${apellido.value}`);
+                console.log("Compro para el estadio GPC: " + this.cantidad + " entradas");
+            }
+
+
+        }
+
+
+        const comprador1 = new entrada(this.precio, this.descuento, this.cantidad)
+        var cantEntradasgpc = comprador1.cantidad
+
+        comprador1.compra();
+        comprador1.ahorro();
+
+        //////
+
+        var entrada1 = cantEntradasgpc
+        entradasactualesGPC.push(entrada1)
+        var suma = 0
+        for (var i = 0; i < entradasactualesGPC.length; i++) {
+            suma += entradasactualesGPC[i];
+        }
+
+        var aforo2 = entradas(aforogpc, suma)
+
+        console.log("aforo restante: " + aforo2)
+
+
+        //////
+
+        if (suma > aforogpc) {
+            alert("La cantidad de entradas actuales vendidas al momento es de : " + suma + " Solamente puede vender " + entradas(aforogpc, suma) + " mas." + "\n Intente nuevamente")
+
+        } else {
             alert("Total a pagar: " + "$" + comprador1.descuento)
-            alert("Gracias por su compra , aun quedan para el estadio " + est1 + " " + entradas(aforocds, suma))
+            alert("Gracias por su compra , aun quedan para el estadio " + est2 + " " + entradas(aforogpc, suma))
 
-        comprador1.visualizar(); 
+            comprador1.visualizar();
 
-        entradasactualesCDS.sort(function(a, b) {
-            return a - b;
-          });
-        console.log("Entradas ordenadas: " + entradasactualesCDS)
+        }
 
 
-            break
-          }
-
-            }
-
-            //Gran Parque Central
-        case 2:
-            console.log("Estadio seleccionado: " + est2)
-
-            console.log("Aforo de estadio seleccionado: " + aforogpc)
-            alert("El aforo de este estadio durante la pandemia sera de: " + aforogpc)
+        //PLANTILLAS LITERALES E innerHTML
 
 
-            let compradorGPC = prompt("ingrese nombre:")
+        var divgpc = document.getElementById("gpc");
 
-            let edad2 = parseInt(prompt("ingrese edad"))
+        var infogpc = {
+            titulo: "Resumen",
+            saldo: comprador1.descuento,
+            entradasactuales: parseInt(document.getElementById("entradasgpc").value),
+            resto: aforo2
+        };
+        var contenedor = document.createElement("div");
+        //Definimos el innerHTML del elemento con una plantilla de texto
+        contenedor.innerHTML = `<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                                <div class="card-header">${infogpc.titulo}</div>
+                                <div class="card-body">
+                                <p class="card-text"> Gracias !!! : ${nombre.value}</p>
+                                <p class="card-text"> Saldo a Pagar: !!! : ${infogpc.saldo}</p>
+                                <h5 class="card-title">Entradas Compradas: ${infogpc.entradasactuales}</h5>
+                                <p class="card-text"> Quedan para vender: ${infogpc.resto}</p>
+                                </div>
+                                </div>`;
+        //Agregamos el contenedor creado al body
+        //Agregamos el contenedor creado al body
 
-            if (edad2 < 18) {
-                alert("Menores de edad no estan autorizados a comprar entradas para este tipo de eventos")
-                console.log("La persona no puede comprar por ser menor de edad")
-                break
-                }
-                else {
+        divgpc.innerHTML = " ";
+        divgpc.appendChild(contenedor);
 
-                    class entrada {
-                        constructor(precio, descuento, cantidad) {
-                        this.precio  = 250;
-                        this.descuento  = parseFloat(descuento);
-                        this.cantidad = cantidad;
-                        }
-                    
-                        compra(){
-                            this.venta = (this.precio - this.descuento) * this.cantidad;
-                        }
-                        
-                        ahorro() {
-                            this.descuento = this.venta; 
-                        }
-                
-                        visualizar(){
-                            console.log(this)
-                            console.log(compradorGPC + " compro para el estadio GPC: " + cantEntradasgpc + "entradas")
-                        }
-                
-                        }
-                
-                        const comprador1 = new entrada (this.precio,prompt("Ingrese descuento: Socios $20 descuento / No socios Ingrese 0"),parseInt(prompt(compradorGPC + " ingrese cantidad de entradas:")))
-                        let cantEntradasgpc = comprador1.cantidad
-                        
-                        comprador1.compra();
-                        comprador1.ahorro();
+        window.localStorage.setItem(entradasgpc, infogpc.resto)
+        var guardado1 = localStorage.getItem(entradasgpc)
+        console.log(guardado1)
 
-                        //////
-                        let entrada2 = cantEntradasgpc
-                        entradasactualesGPC.push(entrada2)
-                        let suma =0
-                        for (let i =0; i<entradasactualesGPC.length;i++){
-                        suma += entradasactualesGPC[i];
-                        }
 
-                        let aforo2 = entradas(aforogpc,suma)
+        alert("chequea info")
 
-                        console.log("aforo restante: " + aforo2)
-                        
-                        //////
-                    
-               
-                        if(suma > aforogpc){
-                            alert("La cantidad de entradas actuales vendidas al momento es de : " + suma + " Solamente puede vender " + entradas(aforogpc,suma) + " mas." + "\n Intente nuevamente" )
-                            break
-                        }
-                
-                        else{
-                            alert("Total a pagar: " + "$" + comprador1.descuento)
-                            alert("Gracias por su compra , aun quedan para el estadio " + est2 + " " + entradas(aforogpc, suma))
-                
-                        comprador1.visualizar(); 
-
-                        entradasactualesGPC.sort(function(a, b) {
-                            return a - b;
-                          });
-                        console.log("Entradas ordenadas: " + entradasactualesGPC)
-                    
-                            break
-                          }
-                    }
-
-            //Centenario
-        case 3:
-            console.log("Estadio seleccionado: " + est3)
-
-            console.log("Aforo de estadio seleccionado: " + aforocentenario)
-            alert("El aforo de este estadio durante la pandemia sera de: " + aforocentenario)
-
-            let compradorCEN = prompt("ingrese nombre:")
-
-            let edad3 = parseInt(prompt("ingrese edad"))
-
-            if (edad3 < 18) {
-                alert("Menores de edad no estan autorizados a comprar entradas para este tipo de eventos")
-                console.log("La persona no puede comprar por ser menor de edad")
-                
-                break
-            }
-                else {
-
-                    class entrada {
-                        constructor(precio, descuento, cantidad) {
-                        this.precio  = 250;
-                        this.descuento  = parseFloat(descuento);
-                        this.cantidad = cantidad;
-                        }
-                    
-                        compra(){
-                            this.venta = (this.precio - this.descuento) * this.cantidad;
-                        }
-                        
-                        ahorro() {
-                            this.descuento = this.venta; 
-                        }
-                
-                        visualizar(){
-                            console.log(this)
-                            console.log(compradorCEN + " compro para el estadio Centenario: " + cantEntradascen + "entradas")
-                        }
-                
-                        }
-
-                        const comprador1 = new entrada (this.precio,prompt("Ingrese descuento: Socios $20 descuento / No socios Ingrese 0"),parseInt(prompt(compradorCEN + " ingrese cantidad de entradas:")))
-
-                        let cantEntradascen = comprador1.cantidad
-
-                        comprador1.compra();
-                        comprador1.ahorro();
-
-                        //////
-                        let entrada3 = cantEntradascen
-                        entradasactualesCEN.push(entrada3)
-                        let suma =0
-                        for (let i =0; i<entradasactualesCEN.length;i++){
-                        suma += entradasactualesCEN[i];
-                        }
-
-                        let aforo3 = entradas(aforocentenario,suma)
-
-                        console.log("aforo restante: " + aforo3)
-                        
-                        //////
-                    
-                        if(suma > aforocentenario){
-                            alert("La cantidad de entradas actuales vendidas al momento es de : " + suma + " Solamente puede vender " + entradas(aforocentenario,suma) + " mas." + "\n Intente nuevamente" )
-                            break
-                        }
-                
-                        else{
-                            alert("Total a pagar: " + "$" + comprador1.descuento)
-                            alert("Gracias por su compra , aun quedan para el estadio " + est3 + " " + entradas(aforocentenario, suma))
-                
-                        comprador1.visualizar(); 
-
-                        entradasactualesCEN.sort(function(a, b) {
-                            return a - b;
-                          });
-                        console.log("Entradas ordenadas: " + entradasactualesCEN)
-
-                            break
-                          }
-                        
-                        }
-            //Default
-        default:
-            alert("NO SELECCIONO NUMERO VALIDO")
-            break;
 
 
 
     }
 
 
-    alert("En esta nueva fase de la Pandemia Covid-19 en Uruguay, el gobierno decide habilitar el 30% de aforo en los estadios")
-    estadio = parseInt(prompt("Ingrese estadio: \n 1 - Campeon del Siglo (Peñarol) \n 2 - Parque Central (Nacional) \n 3 - Centenario (Seleccion Uruguaya) \n 4 - PARA SALIR DEL PROGRAMA"))
-
-}
 
 
-console.log("FUERA DEL PROGRAMA MIMIX - 1.0")
+
+    ///Submit boton formulario Centenario
+
+    var formulario = document.getElementById("formulariocen");
+    formulario.addEventListener("submit", validarDatoscen);
+
+    function validarDatoscen(e) {
+
+        e.preventDefault();
+
+        nombre = document.getElementById("nombrecen")
+        apellido = document.getElementById("apellidocen")
+        edad = document.getElementById("edadcen")
+
+
+
+        var miCheckbox = document.getElementById("checkcen");
+        var descuento1 = 0
+        if (miCheckbox.checked == true) {
+            descuento1 = 20
+            alert("Selecciono que la persona es socia. " + " Tendra un descuento de : $" + descuento1 + " por cada entrada comprada.")
+        } else {
+            descuento1 = 0
+        };
+
+
+
+
+
+        class entrada {
+            constructor(precio, descuento, cantidad) {
+                this.precio = parseInt(250);
+                this.descuento = parseInt(descuento1);
+                this.cantidad = parseInt(document.getElementById("entradascen").value);
+            }
+
+            compra() {
+                this.venta = (this.precio - this.descuento) * this.cantidad;
+            }
+
+            ahorro() {
+                this.descuento = this.venta;
+            }
+
+            visualizar() {
+                console.log(this)
+                console.log(`${nombre.value} : ${apellido.value}`);
+                console.log("Compro para el estadio CEN: " + this.cantidad + " entradas");
+            }
+
+
+        }
+
+
+        const comprador1 = new entrada(this.precio, this.descuento, this.cantidad)
+        var cantEntradascen = comprador1.cantidad
+
+        comprador1.compra();
+        comprador1.ahorro();
+
+        //////
+
+        var entrada1 = cantEntradascen
+        entradasactualesCEN.push(entrada1)
+        var suma = 0
+        for (var i = 0; i < entradasactualesCEN.length; i++) {
+            suma += entradasactualesCEN[i];
+        }
+
+        var aforo3 = entradas(aforocentenario, suma)
+
+        console.log("aforo restante: " + aforo3)
+
+
+        //////
+
+        if (suma > aforocentenario) {
+            alert("La cantidad de entradas actuales vendidas al momento es de : " + suma + " Solamente puede vender " + entradas(aforocentenario, suma) + " mas." + "\n Intente nuevamente")
+
+        } else {
+            alert("Total a pagar: " + "$" + comprador1.descuento)
+            alert("Gracias por su compra , aun quedan para el estadio " + est3 + " " + entradas(aforocentenario, suma))
+
+            comprador1.visualizar();
+
+        }
+
+
+        //PLANTILLAS LITERALES E innerHTML
+
+
+        var divcen = document.getElementById("cen");
+
+        var infocen = {
+            titulo: "Resumen",
+            saldo: comprador1.descuento,
+            entradasactuales: parseInt(document.getElementById("entradascen").value),
+            resto: aforo3
+        };
+        var contenedor = document.createElement("div");
+        //Definimos el innerHTML del elemento con una plantilla de texto
+        contenedor.innerHTML = `<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                                <div class="card-header">${infocen.titulo}</div>
+                                <div class="card-body">
+                                <p class="card-text"> Gracias !!! : ${nombre.value}</p>
+                                <p class="card-text"> Saldo a Pagar: !!! : ${infocen.saldo}</p>
+                                <h5 class="card-title">Entradas Compradas: ${infocen.entradasactuales}</h5>
+                                <p class="card-text"> Quedan para vender: ${infocen.resto}</p>
+                                </div>
+                                </div>`;
+        //Agregamos el contenedor creado al body
+        divcen.innerHTML = " ";
+        divcen.appendChild(contenedor);
+
+        window.localStorage.setItem(entradascen, infocen.resto)
+        var guardado1 = localStorage.getItem(entradascen)
+        console.log(guardado1)
+
+        alert("chequea info")
+
+
+
+
+    }
+
+
+
+});

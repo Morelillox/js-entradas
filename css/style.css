@@ -1,7 +1,16 @@
+.principal {
+  padding-top: 20px;
+  font-family: "Staatliches", cursive;
+  text-align: center;
+  position: relative;
+  color: #000;
+  text-decoration: none;
+  font-size: 60px;
+}
+
 .titulo {
   padding-top: 20px;
-  font-style: oblique;
-  font-family: cursive;
+  font-family: "Staatliches", cursive;
   text-align: center;
   position: relative;
   color: #000;
@@ -37,10 +46,11 @@
 .btn-boton {
   background-color: #878787 !important;
   border-color: #7a7a7a !important;
-  color: #FFFFFF;
+  color: black !important;
   display: inline;
   align-items: center;
   justify-content: space-evenly !important;
+  font-family: "Staatliches", cursive;
 }
 
 .btn-boton:hover,
@@ -49,7 +59,7 @@
 .btn-boton.active {
   background-color: #777777 !important;
   border-color: #5f5f5f !important;
-  color: #FFFFFF;
+  color: black !important;
 }
 
 .btn-boton.disabled:hover,
@@ -66,11 +76,20 @@ fieldset[disabled] .btn-boton:active,
 fieldset[disabled] .btn-boton.active {
   background-color: #878787 !important;
   border-color: #7a7a7a !important;
-  color: #FFFFFF;
+  color: black !important;
 }
 
-.section {
-  background-color: rosybrown;
+input {
+  border-radius: 5px;
+  color: black !important;
+  display: inline;
+  align-items: center;
+  justify-content: space-evenly !important;
+  font-family: "Staatliches", cursive;
+}
+
+body {
+  background-color: #adcab8 !important;
 }
 
 .pelota {
@@ -80,15 +99,50 @@ fieldset[disabled] .btn-boton.active {
 }
 
 .card-img, .card-img-bottom, .card-img-top {
-  width: 30% !important;
+  width: 280px !important;
+  height: 210px !important;
   display: flex;
   justify-content: center;
+}
+
+.card {
+  background-color: #c5b783 !important;
+  border-radius: 15px !important;
 }
 
 .card-body {
   flex: 1 1 auto;
   padding: 1rem 1rem;
   display: inline-grid;
+}
+
+.divgrid {
+  display: grid;
+  grid-template-areas: "a b";
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.img {
+  grid-area: a;
+  display: flex;
+  justify-content: center;
+  border-radius: 25px;
+}
+
+.resumen {
+  grid-area: b;
+  font-family: sans-serif;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  border-color: black;
+  border-radius: 25px;
+  font-family: "Staatliches", cursive;
+}
+
+.resto {
+  color: brown;
 }
 
 /*# sourceMappingURL=style.css.map */

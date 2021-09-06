@@ -1,213 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- css / bootstrap -->
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
-    
+  <!-- font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
 
-    <title>INGRESO AL ESTADIO</title>
+
+  <!-- css / bootstrap -->
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+
+  <title>INGRESO AL ESTADIO</title>
 
 
 
 </head>
+
 <body>
 
-<header class="containen">
-    <img src="images/ingresoestadios.png" alt="Pelota" class="container pelota">
-</header>
 
-<div>
- <h1 class="titulo container">Seleccione un estadio</h1>   
-</div>
+  <header class="container">
+    <h1 class="principal">Ingresos Uruguay (Version 1.0)</h1>
 
 
-<div class="card-group container">
 
-    <!-- tarjeta CDS -->
-    <div class="card">
-      <img src="./images/cdsimg.jpeg" class="card-img-top img" alt="...">
-      <div class="card-body">
-        <button class="btn btn-primary btn-boton" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
-           Campeon del Siglo
-          </button>
-        </p>
-        <div class="collapse" id="collapseExample1">
+  </header>
 
-        <form>
 
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="socio" id="defaultCheck1">
-                <label class="form-check-label" for="defaultCheck1">
-                  Socio
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="nosocio" id="defaultCheck2" >
-                <label class="form-check-label" for="defaultCheck2">
-                  No Socio
-                </label>
+  <div>
+    <h2 class="titulo container">Seleccione un estadio</h2>
+  </div>
+
+
+  <!-- <div class="card-group container"> -->
+
+  <!-- tarjeta CDS -->
+  <div class="card container">
+
+    <div class="divgrid">
+      <img src="./images/cdsimg.jpeg" class="card-img-top img" alt="Estadio Campeon del Siglo">
+      <div id="cds" class="resumen container"></div>
+    </div>
+
+    <div class="card-body">
+
+      <button onclick="agregarItemcds()" class="btn btn-primary btn-boton" data-bs-toggle="collapse"
+        data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
+        Campeon del Siglo
+      </button>
+      </p>
+      <div class="collapse" id="collapseExample1">
+
+        <form id="formulariocds">
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="checkcds">
+            <label class="form-check-label" for="defaultCheck1">
+              Socio
+            </label>
+          </div>
+
+
+          <div>
+            <label for="quantity">Edad: (Menores de edad no pueden comprar entradas)</label>
+            <input type="number" id="edadcds" name="edad" min="18" max="150" required>
+          </div>
+
+
+          <br>
+
+          <div class="row">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Nombre" id="nombrecds" required>
             </div>
-
-            <div>
-                <label for="quantity">Edad: (Menores de edad no pueden comprar entradas)</label>
-                <input type="number" id="edadcds" name="edad" min="18" max="150"> 
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Apellido" id="apellidocds" required>
             </div>
-            
+          </div>
 
-                <br>
 
-                <div class="row">
-                  <div class="col">
-                    <input type="text" class="form-control" placeholder="Nombre" id="nombrecds">
-                  </div>
-                  <div class="col">
-                    <input type="text" class="form-control" placeholder="Apellido" id="apellidocds">
-                  </div>
-                </div>
-              
+          <br>
 
-              <br>
+          <div>
+            <label for="quantity">Cantidad de entradas por persona (Minimo 1 - Maximo 10):</label>
+            <input type="number" id="entradascds" name="Entradas" min="1" max="10" required>
 
-              <div>
-                 <label for="quantity">Cantidad de entradas por persona (Minimo 1 - Maximo 10):</label>
-                <input type="number" id="entradascds" name="Entradas" min="1" max="10"> 
+          </div>
 
-              </div>
+          <button type="submit" class=" btn-boton">comprar</button>
 
-              <button type="submitcds" class="btn btn-primary">comprar</button>
-                
         </form>
 
       </div>
     </div>
-    
-     <!-- tarjeta Parque central -->
-    <div class="card">
-      <img src="./images/gpcimg.jpg" class="card-img-top img" alt="...">
-      <div class="card-body">
-        <button class="btn btn-primary btn-boton" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
-            Parque Central
-          </button>
-        </p>
-        <div class="collapse" id="collapseExample2">
-        
-            <form>
+  </div>
 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="socio" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
-                      Socio
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="nosocio" id="defaultCheck2" >
-                    <label class="form-check-label" for="defaultCheck2">
-                      No Socio
-                    </label>
-                </div>
-    
-                <div>
-                    <label for="quantity">Edad: (Menores de edad no pueden comprar entradas)</label>
-                    <input type="number" id="edadgpc" name="edad" min="18" max="150"> 
-                </div>
-                
-    
-                    <br>
-    
-                    <div class="row">
-                      <div class="col">
-                        <input type="text" class="form-control" placeholder="Nombre" id="nombregpc">
-                      </div>
-                      <div class="col">
-                        <input type="text" class="form-control" placeholder="Apellido" id="apellidogpc">
-                      </div>
-                    </div>
-                  
-    
-                  <br>
-    
-                  <div>
-                     <label for="quantity">Cantidad de entradas por persona (Minimo 1 - Maximo 10):</label>
-                    <input type="number" id="entradasgpc" name="Entradas" min="1" max="10"> 
-    
-                  </div>
-    
-                  <button type="submitgpc" class="btn btn-primary">comprar</button>
-                    
-            </form>
+  <br>
+
+  <!-- tarjeta Parque central -->
+  <div class="card container">
+
+    <div class="divgrid">
+      <img src="./images/gpcimg.jpg" class="card-img-top img" alt="Parque Central">
+      <div id="gpc" class="resumen container"></div>
+    </div>
+
+    <div class="card-body">
+
+      <button onclick="agregarItemgpc()" class="btn btn-primary btn-boton" data-bs-toggle="collapse"
+        data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+        Parque Central
+      </button>
+      </p>
+      <div class="collapse" id="collapseExample2">
+
+        <form id="formulariogpc">
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="20" id="checkgpc">
+            <label class="form-check-label" for="defaultCheck1">
+              Socio
+            </label>
+          </div>
+
+
+          <div>
+            <label for="quantity">Edad: (Menores de edad no pueden comprar entradas)</label>
+            <input type="number" id="edadgpc" name="edad" min="18" max="150" required>
+          </div>
+
+
+          <br>
+
+          <div class="row">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Nombre" id="nombregpc" required>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Apellido" id="apellidogpc" required>
+            </div>
+          </div>
+
+
+          <br>
+
+          <div>
+            <label for="quantity">Cantidad de entradas por persona (Minimo 1 - Maximo 10):</label>
+            <input type="number" id="entradasgpc" name="Entradas" min="1" max="10" required>
+
+          </div>
+
+          <button type="submit" class=" btn-boton">comprar</button>
+
+        </form>
 
       </div>
     </div>
-
-     <!-- tarjeta CENTENARIO -->
-    <div class="card">
-      <img src="./images/cendenarioimg.jpeg" class="card-img-top img " alt="...">
-      <div class="card-body">
-        <button class="btn btn-primary btn-boton" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">
-            Estadio Centenario
-          </button>
-        </p>
-        <div class="collapse" id="collapseExample3">
-         
-            <form>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="socio" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
-                      Socio
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="nosocio" id="defaultCheck2" >
-                    <label class="form-check-label" for="defaultCheck2">
-                      No Socio
-                    </label>
-                </div>
-    
-                <div>
-                    <label for="quantity">Edad: (Menores de edad no pueden comprar entradas)</label>
-                    <input type="number" id="edadcen" name="edad" min="18" max="150"> 
-                </div>
-                
-    
-                    <br>
-    
-                    <div class="row">
-                      <div class="col">
-                        <input type="text" class="form-control" placeholder="Nombre" id="nombrecen">
-                      </div>
-                      <div class="col">
-                        <input type="text" class="form-control" placeholder="Apellido" id="apellidocen">
-                      </div>
-                    </div>
-                  
-    
-                  <br>
-    
-                  <div>
-                     <label for="quantity">Cantidad de entradas por persona (Minimo 1 - Maximo 10):</label>
-                    <input type="number" id="entradascen" name="Entradas" min="1" max="10"> 
-    
-                  </div>
-    
-                  <button type="submitcen" class="btn btn-primary">comprar</button>
-                    
-            </form>
-
-
-      </div>
   </div>
 
-    <script src="scrip.js"></script>
-    <script src="clases.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+  <br>
+
+  <!-- tarjeta CENTENARIO -->
+  <div class="card container">
+
+    <div class="divgrid">
+      <img src="./images/cendenarioimg.jpeg" class="card-img-top img" alt="Estadio Centenario">
+      <div id="cen" class="resumen container"></div>
+    </div>
+
+    <div class="card-body">
+
+      <button onclick="agregarItemcen()" class="btn btn-primary btn-boton" data-bs-toggle="collapse"
+        data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">
+        Estadio Centenario
+      </button>
+      </p>
+      <div class="collapse" id="collapseExample3">
+
+        <form id="formulariocen">
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="20" id="checkcen">
+            <label class="form-check-label" for="defaultCheck1">
+              Socio
+            </label>
+          </div>
+
+
+          <div>
+            <label for="quantity">Edad: (Menores de edad no pueden comprar entradas)</label>
+            <input type="number" id="edadcen" name="edad" min="18" max="150" required>
+          </div>
+
+
+          <br>
+
+          <div class="row">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Nombre" id="nombrecen" required>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Apellido" id="apellidocen" required>
+            </div>
+          </div>
+
+
+          <br>
+
+          <div>
+            <label for="quantity">Cantidad de entradas por persona (Minimo 1 - Maximo 10):</label>
+            <input type="number" id="entradascen" name="Entradas" min="1" max="10" required>
+
+          </div>
+
+          <button type="submit" class=" btn-boton">comprar</button>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="scrip.js"></script>
+  <script src="clases.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+  </script>
 
 </body>
+
 </html>
