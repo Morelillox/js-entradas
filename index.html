@@ -30,10 +30,37 @@
 
   <header class="container">
     <h1 class="principal">Ingresos Uruguay (Version 1.0)</h1>
-
-
+    <div id="master"></div>
 
   </header>
+
+  <nav>
+    <div class="card container usersMaster">
+
+ 
+      <div class="card-body">
+  
+        <button  class="btn btn-warning btn-block" data-bs-toggle="collapse"
+          data-bs-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample4">
+          MASTER
+        </button>
+        </p>
+      <div class="collapse" id="collapseExample4">
+          <form action="https://reqres.in/api/users?page=2" method="GET">
+            <button type="button" id="listarUsers" class="btn btn-primary btn-boton">Usuarios</button>
+        </form>
+        <hr>
+
+        <P>Porfavor <strong>seleccione</strong> un usuario de la lista master</P>
+
+        <div id="caja-lista-users" class="container">
+          
+        </div>
+  
+      </div>  
+    </div>
+  
+  </nav>
 
 
   <div>
@@ -47,7 +74,8 @@
   <div class="card container">
 
     <div class="divgrid">
-      <img src="./images/cdsimg.jpeg" class="card-img-top img" alt="Estadio Campeon del Siglo">
+      <p id="contenedorEntradascds"></p>
+      <img src="./images/cdsimg.jpeg" id="picCds" class="card-img-top img" alt="Estadio Campeon del Siglo">
       <div id="cds" class="resumen container"></div>
     </div>
 
@@ -62,20 +90,20 @@
 
         <form id="formulariocds">
 
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="checkcds">
-            <label class="form-check-label" for="defaultCheck1">
-              Socio
-            </label>
-          </div>
-
-
+         
           <div>
             <label for="quantity">Edad: (Menores de edad no pueden comprar entradas)</label>
             <input type="number" id="edadcds" name="edad" min="18" max="150" required>
           </div>
 
+          <br>
 
+          <select class="form-select" id="sociosCDS" required>
+            <option value="0" >No socio </option>
+            <option value="20">Socio</option>
+          </select>
+
+          
           <br>
 
           <div class="row">
@@ -109,8 +137,10 @@
   <!-- tarjeta Parque central -->
   <div class="card container">
 
+    
     <div class="divgrid">
-      <img src="./images/gpcimg.jpg" class="card-img-top img" alt="Parque Central">
+      <p id="contenedorEntradasgpc"></p>
+      <img src="./images/gpcimg.jpg" id="picGPC" class="card-img-top img" alt="Parque Central">
       <div id="gpc" class="resumen container"></div>
     </div>
 
@@ -125,12 +155,7 @@
 
         <form id="formulariogpc">
 
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="20" id="checkgpc">
-            <label class="form-check-label" for="defaultCheck1">
-              Socio
-            </label>
-          </div>
+
 
 
           <div>
@@ -150,6 +175,13 @@
             </div>
           </div>
 
+
+          <br>
+
+          <select class="form-select" id="sociosGPC" required>
+            <option value="0" >No socio </option>
+            <option value="20">Socio</option>
+          </select>
 
           <br>
 
@@ -173,7 +205,8 @@
   <div class="card container">
 
     <div class="divgrid">
-      <img src="./images/cendenarioimg.jpeg" class="card-img-top img" alt="Estadio Centenario">
+      <p id="contenedorEntradascen"></p>
+      <img src="./images/cendenarioimg.jpeg" id="picCEN" class="card-img-top img" alt="Estadio Centenario">
       <div id="cen" class="resumen container"></div>
     </div>
 
@@ -188,12 +221,6 @@
 
         <form id="formulariocen">
 
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="20" id="checkcen">
-            <label class="form-check-label" for="defaultCheck1">
-              Socio
-            </label>
-          </div>
 
 
           <div>
@@ -215,6 +242,11 @@
 
 
           <br>
+          <select class="form-select" id="sociosCEN" required>
+            <option value="0" >No socio </option>
+            <option value="20">Socio</option>
+          </select>
+          <br>
 
           <div>
             <label for="quantity">Cantidad de entradas por persona (Minimo 1 - Maximo 10):</label>
@@ -231,6 +263,7 @@
   </div>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="ajax.js"></script>
   <script src="scrip.js"></script>
   <script src="clases.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"

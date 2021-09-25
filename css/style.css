@@ -17,6 +17,13 @@
   text-decoration: none;
 }
 
+.userTx{
+  padding-top: 10px;
+  font-family: "Staatliches", cursive;
+  color: #000;
+  text-decoration: none;
+}
+
 .titulo:hover {
   color: #000;
 }
@@ -50,6 +57,11 @@
   display: inline;
   align-items: center;
   justify-content: space-evenly !important;
+  font-family: "Staatliches", cursive;
+}
+
+.btn-warning{
+  background-color: gold !important;
   font-family: "Staatliches", cursive;
 }
 
@@ -130,6 +142,15 @@ body {
   border-radius: 25px;
 }
 
+.user{
+  border-radius: 25px;
+  width: 50px ;
+  height: 50px ;
+  display: flex;
+  justify-content: left;
+ 
+}
+
 .resumen {
   grid-area: b;
   font-family: sans-serif;
@@ -143,6 +164,11 @@ body {
 
 .resto {
   color: brown;
+}
+
+#caja-lista-users{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr ;
 }
 
 /*# sourceMappingURL=style.css.map */
